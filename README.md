@@ -14,4 +14,4 @@ Based on:
 
 * https://www.ired.team/offensive-security/defense-evasion/windows-api-hashing-in-malware
 * https://github.com/LloydLabs/Windows-API-Hashing
-* And another source that I actually don't remember (I will update it later when I will found the repository again).
+* And another source that I actually don't remember (I will update it later).
