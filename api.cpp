@@ -44,11 +44,16 @@ namespace api {
 		PLDR_DATA_TABLE_ENTRY ptr_module_entry = NULL, ptr_start_module = NULL;
 		PUNICODE_STR dll_name = NULL;
 
-		ptr_peb = (_PEB*)__readgsqword(0x60);
+		#ifdef _WIN64 // Check if the compilation is for x64 architecture
+			ptr_peb = (_PEB*)__readgsqword(0x60);
+		#else // x86 architecture
+			ptr_peb = (_PEB*)__readfsdword(0x30);
+		#endif
+
 		ptr_ldr_data = ptr_peb->pLdr;
 		ptr_module_entry = ptr_start_module = (PLDR_DATA_TABLE_ENTRY)ptr_ldr_data->InMemoryOrderModuleList.Flink;
 
-		do{
+		do {
 			dll_name = &ptr_module_entry->BaseDllName;
 
 			if (dll_name->pBuffer == NULL)
