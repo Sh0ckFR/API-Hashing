@@ -45,9 +45,9 @@ namespace api {
 		PUNICODE_STR dll_name = NULL;
 
 		#ifdef _WIN64 // Check if the compilation is for x64 architecture
-			ptr_peb = (_PEB*)__readgsqword(0x60);
+			ptr_peb = (_PPEB)__readgsqword(0x60);
 		#else // x86 architecture
-			ptr_peb = (_PEB*)__readfsdword(0x30);
+			ptr_peb = (_PPEB)__readfsdword(0x30);
 		#endif
 
 		ptr_ldr_data = ptr_peb->pLdr;
